@@ -25,6 +25,8 @@ define(['jquery'], function($) {
 			this.active = true;
 			$('p[data-action="lose"]').hide();
 			this.newRound();
+
+			$('body').removeClass();
 		},
 
 		// add a new color to the sequence and animate it to the user
@@ -33,6 +35,40 @@ define(['jquery'], function($) {
 			this.sequence.push(this.randomNumber());
 			this.copy = this.sequence.slice(0);
 			this.animate(this.sequence);
+
+			$('body').addClass('round-' + this.round)
+
+			if (this.round === 7) {
+				alert('Did u expect that coming? xd')
+			}
+
+			if (this.round === 8) {
+				alert('Ok...a bit more...sure u having fun anyway! hah')
+			}
+
+			if (this.round === 9) {
+				alert('Just one more...')
+			}
+
+			if (this.round === 10) {
+				alert('Obviously...I lied lol! Continue milady!')
+			}
+
+			if (this.round === 10) {
+				alert('Boh...so close...')
+				alert('Maybe u should leave it here')
+				alert('No?')
+				alert('Ok, let\'s continue...')
+			}
+
+			if (this.round === 11) {
+				alert('I told u lvl 12? I lied again! Continue milady, I know u can!')
+				alert('Cause u can, right? hah')
+				alert('Come on!')
+				alert('U tired? hah')
+				alert('Ok ok...u got either a trip to somewhere or spanish course! Enjoy!! :D')
+			}
+
 		},
 
 		// the game is controlled primarily through this function, along with checkLose().
@@ -134,6 +170,10 @@ define(['jquery'], function($) {
 		// 1. ability to play multiple sounds in a row without waiting for the first to complete,
 		// 2. <audio> tag provides our fallbacks (ogg, mp3).
 		playSound: function(tile) {
+			if (this.round > 2) {
+				tile = '0' + tile;
+			}
+
 			if (this.mode !== 'light-only') {
 				var audio = $('<audio autoplay></audio>');
 				audio.append('<source src="sounds/' + tile + '.ogg" type="audio/ogg" />');
